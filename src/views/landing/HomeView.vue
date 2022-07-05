@@ -1,7 +1,7 @@
 <template>
   <div class="content">
     <div class="divider">
-      <div>
+      <div class="left">
         <div class="head">
           <p>Welcome to</p>
           <p class="logo-title">To Do Vue</p>
@@ -20,7 +20,7 @@
           </div>
         </div>
       </div>
-      <div>
+      <div class="right">
         <transition name="card" appear>
           <dummy-list></dummy-list>
         </transition>
@@ -47,7 +47,6 @@ export default {
 
 <style scoped>
 .divider {
-  padding: 1rem;
   display: flex;
   justify-content: space-between;
   gap: 2rem;
@@ -65,6 +64,10 @@ export default {
 .button-box {
   display: flex;
   gap: 0.5rem;
+}
+
+.right {
+  margin-right: 2rem;
 }
 
 .card-enter-active {
