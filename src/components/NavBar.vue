@@ -2,7 +2,7 @@
   <va-navbar color="primary" class="mb-2 custom">
     <template #left>
       <va-navbar-item>
-        <p class="logo-title">To-Do Vue</p>
+        <p class="logo-title" style="font-size: 1.5rem">To-Do Vue</p>
       </va-navbar-item>
     </template>
     <template #right>

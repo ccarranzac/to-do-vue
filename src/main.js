@@ -12,7 +12,7 @@ app.use(router);
 app.use(VuesticPlugin, {
   colors: {
     primary: "#FFFFFF",
-    secondary: "#002c85",
+    secondary: "#45eba5",
     success: "#40e583",
     info: "#2c82e0",
     danger: "#e34b4a",
