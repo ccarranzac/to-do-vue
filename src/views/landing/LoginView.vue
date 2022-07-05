@@ -64,8 +64,7 @@ export default {
     handleSubmit() {
       this.$refs.form.validate();
       if (this.validation) {
-        // this.$store.dispatch("logIn");
-        console.log("logged");
+        this.$store.dispatch("logIn");
       }
     },
     toRegister() {

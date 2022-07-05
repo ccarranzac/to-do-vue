@@ -78,9 +78,9 @@ export default {
     handleSubmit() {
       this.$refs.form.validate();
       if (this.validation) {
-        // this.$store.dispatch("register").then(() => {
-        //   this.isCloseableAlertVisible = true;
-        // });
+        this.$store.dispatch("register").then(() => {
+          this.isCloseableAlertVisible = true;
+        });
         console.log("registered");
       }
     },
