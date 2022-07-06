@@ -1,4 +1,6 @@
 import { createStore } from "vuex";
+import router from "@/router";
+
 
 export default createStore({
   state: {
@@ -23,10 +25,15 @@ export default createStore({
       commit("setLoading", true);
       setTimeout(() => {
         commit("setLoading", false);
-        // commit("setAuth", true);
-        // localStorage.setItem("auth", true);
-        //router.push({ name: "vault" });
+        commit("setAuth", true);
+        localStorage.setItem("auth", true);
+        router.push({ name: "dashboard" });
       }, 2000);
+    },
+    logOut({ commit }) {
+      //simulating log out
+      localStorage.clear();
+      commit("setAuth", false);
     },
     register({ commit }) {
       commit("setLoading", true);

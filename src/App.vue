@@ -11,7 +11,12 @@ export default {
       return this.$store.getters.getLoading;
     },
   },
-  mounted() {},
+  mounted() {
+    const auth = localStorage.getItem("auth")
+    if(auth){
+      this.$store.commit("setAuth", true)
+    }
+  },
 };
 </script>
 

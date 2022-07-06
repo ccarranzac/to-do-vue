@@ -4,6 +4,11 @@ import HomeView from "../views/landing/HomeView.vue";
 import AboutView from "../views/landing/AboutView.vue";
 import RegisterView from "../views/landing/RegisterView.vue";
 import LoginView from "../views/landing/LoginView.vue";
+import EditTask from "../views/user/EditTask.vue";
+import NewTask from "../views/user/NewTask.vue";
+import TaskDashboard from "../views/user/TaskDashboard.vue";
+import store from "@/store";
+
 
 const routes = [
   {
@@ -34,11 +39,53 @@ const routes = [
       },
     ],
   },
+  {
+    path: "/dashboard",
+    name: "dashboard",
+    component: TaskDashboard,
+    meta: {
+      protected: true,
+    }
+  },
+  {
+    path: "/edit-task",
+    name: "edit-task",
+    component: EditTask,
+    meta: {
+      protected: true,
+    }
+  },
+  {
+    path: "/new-task",
+    name: "new-task",
+    component: NewTask,
+    meta: {
+      protected: true,
+    }
+  }
 ];
 
 const router = createRouter({
   history: createWebHistory(),
   routes,
+  linkActiveClass: "active"
+});
+
+//protected routes
+router.beforeEach((to, from, next) => {
+  const requiresAuth = to.matched.some((record) => record.meta.protected);
+  if (requiresAuth && store.state.auth === false) {
+    next({ name: "home" });
+  } else if (
+    to.name === "home" ||
+    to.name === "about" ||
+    to.name === "register" ||
+    to.name === "login"
+  ) {
+    if (store.state.auth === true) {
+      next({ name: "dashboard" });
+    } else next();
+  } else next();
 });
 
 export default router;
