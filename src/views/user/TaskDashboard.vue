@@ -24,7 +24,12 @@
             placeholder="Filter..."
             color="black"
           />
-          <va-data-table :items="tasks" :filter="filter" />
+          <va-data-table
+            :items="tasks"
+            :filter="filter"
+            :selectable="selectable"
+            v-model="selectedItems"
+          />
         </div>
       </div>
     </div>
@@ -48,6 +53,8 @@ export default {
       deletable: false,
       completable: false,
       filter: "",
+      selectable: true,
+      selectedItems: [],
     };
   },
   computed: mapState(["tasks"]),

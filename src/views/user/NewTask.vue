@@ -94,6 +94,7 @@ export default {
           title: this.title,
           description: this.description,
           tags: this.tags,
+          state: "Sin completar",
         };
         this.$store.dispatch("createTask", task);
       }
