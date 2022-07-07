@@ -2,7 +2,9 @@
   <div class="footer">
     <p>To Do Vue is property of <span>Camilo Andres Carranza</span></p>
     <div class="container">
-      <a href="https://github.com/ccarranzac" target="_blank">See in Github</a>
+      <a href="https://github.com/ccarranzac/to-do-vue" target="_blank"
+        >See in Github</a
+      >
       <img src="../assets/github.png" alt="github logo" />
     </div>
   </div>
