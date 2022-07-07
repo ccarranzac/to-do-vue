@@ -48,7 +48,7 @@ const routes = [
     },
   },
   {
-    path: "/edit-task",
+    path: "/edit-task/:id",
     name: "edit-task",
     component: EditTask,
     meta: {

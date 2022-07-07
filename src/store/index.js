@@ -6,6 +6,7 @@ export default createStore({
     loading: false,
     auth: false,
     tasks: [],
+    task: {},
   },
   getters: {
     getLoading(state) {
@@ -13,6 +14,9 @@ export default createStore({
     },
     getTasks(state) {
       return state.tasks;
+    },
+    getTask(state) {
+      return state.task;
     },
   },
   mutations: {
@@ -24,6 +28,10 @@ export default createStore({
     },
     setTasks(state, value) {
       state.tasks = value;
+    },
+    setTask(state, value) {
+      const task = state.tasks.find((x) => x.id === value);
+      state.task = task;
     },
   },
   actions: {
@@ -50,6 +58,18 @@ export default createStore({
         commit("setTasks", tasks);
         localStorage.setItem("tasks", JSON.stringify(tasks));
         commit("setLoading", false);
+      }, 2000);
+    },
+    editTask({ commit, getters }, payload) {
+      commit("setLoading", true);
+      setTimeout(() => {
+        let tasks = getters.getTasks;
+        var index = tasks.findIndex((x) => x.id == payload.id);
+        tasks[index] = payload;
+        commit("setTasks", tasks);
+        localStorage.setItem("tasks", JSON.stringify(tasks));
+        commit("setLoading", false);
+        router.push({ name: "dashboard" });
       }, 2000);
     },
     deleteTasks({ commit, getters }, payload) {

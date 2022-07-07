@@ -102,7 +102,12 @@ export default {
     completeTasks() {
       this.$store.dispatch("completeTasks", this.selectedItems);
     },
-    editTask() {},
+    editTask() {
+      this.$router.push({
+        name: "edit-task",
+        params: { id: this.selectedItems[0].id },
+      });
+    },
     removeTasks() {
       this.$store.dispatch("deleteTasks", this.selectedItems);
     },
