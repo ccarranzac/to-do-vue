@@ -7,6 +7,7 @@ import LoginView from "../views/landing/LoginView.vue";
 import EditTask from "../views/user/EditTask.vue";
 import NewTask from "../views/user/NewTask.vue";
 import TaskDashboard from "../views/user/TaskDashboard.vue";
+import NotFound from "../views/NotFound.vue";
 import store from "@/store";
 
 const routes = [
@@ -62,6 +63,7 @@ const routes = [
       protected: true,
     },
   },
+  { path: "/:notFound(.*)", component: NotFound },
 ];
 
 const router = createRouter({
