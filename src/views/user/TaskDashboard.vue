@@ -57,6 +57,26 @@ export default {
       selectedItems: [],
     };
   },
+  watch: {
+    selectedItems: {
+      handler(value) {
+        if (value.length > 0) {
+          this.completable = true;
+          this.deletable = true;
+          if (value.length === 1) {
+            this.editable = true;
+          } else {
+            this.editable = false;
+          }
+        } else {
+          this.editable = false;
+          this.completable = false;
+          this.deletable = false;
+        }
+      },
+      deep: true,
+    },
+  },
   computed: mapState(["tasks"]),
   methods: {
     logOut() {
