@@ -38,6 +38,28 @@ export default createStore({
         router.push({ name: "dashboard" });
       }, 2000);
     },
+    completeTasks({ commit, getters }, payload) {
+      commit("setLoading", true);
+      setTimeout(() => {
+        let tasks = getters.getTasks;
+        for (let item of payload) {
+          console.log(item.id);
+          tasks.map((el) =>
+            el.id === item.id ? (el.state = "Completado") : el.state
+          );
+        }
+        commit("setTasks", tasks);
+        localStorage.setItem("tasks", JSON.stringify(tasks));
+        commit("setLoading", false);
+      }, 2000);
+    },
+    deleteTasks({ commit }, payload) {
+      commit("setLoading", true);
+      setTimeout(() => {
+        console.log(payload);
+        commit("setLoading", false);
+      }, 2000);
+    },
     initialTasks({ commit }) {
       const tasks = localStorage.getItem("tasks");
       if (tasks) {

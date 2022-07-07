@@ -87,9 +87,13 @@ export default {
     createTask() {
       this.$router.push({ name: "new-task" });
     },
-    completeTasks() {},
+    completeTasks() {
+      this.$store.dispatch("completeTasks", this.selectedItems);
+    },
     editTask() {},
-    removeTasks() {},
+    removeTasks() {
+      this.$store.dispatch("deleteTasks", this.selectedItems);
+    },
   },
 };
 </script>
