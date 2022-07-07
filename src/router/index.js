@@ -9,7 +9,6 @@ import NewTask from "../views/user/NewTask.vue";
 import TaskDashboard from "../views/user/TaskDashboard.vue";
 import store from "@/store";
 
-
 const routes = [
   {
     path: "/",
@@ -45,7 +44,7 @@ const routes = [
     component: TaskDashboard,
     meta: {
       protected: true,
-    }
+    },
   },
   {
     path: "/edit-task",
@@ -53,7 +52,7 @@ const routes = [
     component: EditTask,
     meta: {
       protected: true,
-    }
+    },
   },
   {
     path: "/new-task",
@@ -61,14 +60,14 @@ const routes = [
     component: NewTask,
     meta: {
       protected: true,
-    }
-  }
+    },
+  },
 ];
 
 const router = createRouter({
   history: createWebHistory(),
   routes,
-  linkActiveClass: "active"
+  linkActiveClass: "active",
 });
 
 //protected routes

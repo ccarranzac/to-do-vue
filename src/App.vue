@@ -12,9 +12,10 @@ export default {
     },
   },
   mounted() {
-    const auth = localStorage.getItem("auth")
-    if(auth){
-      this.$store.commit("setAuth", true)
+    this.$store.dispatch("initialTasks");
+    const auth = localStorage.getItem("auth");
+    if (auth) {
+      this.$store.commit("setAuth", true);
     }
   },
 };
