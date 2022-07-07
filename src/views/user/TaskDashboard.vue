@@ -29,7 +29,19 @@
             :filter="filter"
             :selectable="selectable"
             v-model="selectedItems"
-          />
+          >
+            <template #cell(state)="{ value }"
+              ><va-chip
+                v-if="value === 'Completado'"
+                color="secondary"
+                size="small"
+                >{{ value }}</va-chip
+              >
+              <va-chip v-else color="warning" size="small">{{
+                value
+              }}</va-chip></template
+            >
+          </va-data-table>
         </div>
       </div>
     </div>

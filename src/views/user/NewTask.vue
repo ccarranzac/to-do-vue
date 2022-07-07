@@ -89,13 +89,24 @@ export default {
     handleSubmit() {
       this.$refs.form.validate();
       if (this.validation) {
-        const task = {
-          id: this.tasks.length + 1,
-          title: this.title,
-          description: this.description,
-          tags: this.tags,
-          state: "Sin completar",
-        };
+        let task = {};
+        if (this.tasks.length > 0) {
+          task = {
+            id: this.tasks[this.tasks.length - 1].id + 1,
+            title: this.title,
+            description: this.description,
+            tags: this.tags,
+            state: "Sin completar",
+          };
+        } else {
+          task = {
+            id: 1,
+            title: this.title,
+            description: this.description,
+            tags: this.tags,
+            state: "Sin completar",
+          };
+        }
         this.$store.dispatch("createTask", task);
       }
     },

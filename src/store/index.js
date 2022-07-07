@@ -43,7 +43,6 @@ export default createStore({
       setTimeout(() => {
         let tasks = getters.getTasks;
         for (let item of payload) {
-          console.log(item.id);
           tasks.map((el) =>
             el.id === item.id ? (el.state = "Completado") : el.state
           );
@@ -53,10 +52,13 @@ export default createStore({
         commit("setLoading", false);
       }, 2000);
     },
-    deleteTasks({ commit }, payload) {
+    deleteTasks({ commit, getters }, payload) {
       commit("setLoading", true);
       setTimeout(() => {
-        console.log(payload);
+        let tasks = getters.getTasks;
+        tasks = tasks.filter((el) => !payload.includes(el));
+        commit("setTasks", tasks);
+        localStorage.setItem("tasks", JSON.stringify(tasks));
         commit("setLoading", false);
       }, 2000);
     },
